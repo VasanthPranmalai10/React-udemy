@@ -1,14 +1,53 @@
-import "../components/CoreConcept.css"
+import { useState } from "react";
+import "../components/CoreConcept.css";
+import TabButton from "./TabButton";
+import { exampleData } from "../data.js";
+
 export default function CoreConcept({ concept }) {
+    const [content, setContent] = useState(null); // Initial value should be null
+
+    function ContentChange(tab) {
+        const key = tab.toLowerCase(); // Convert tab label to match keys in exampleData
+        setContent(key);
+        console.log(exampleData[key]);
+    }
+
+    const Tabs = ["Component", "Props", "State", "JSX"];
+
     return (
-        <div className='core-concept'>
-            {concept.map((data, index) => (
-                <div key={index} className='concept'>
-                    <img src={data.image} alt={data.name} className="image" />
-                    <h1>{data.name}</h1>
-                    <p>{data.description}</p>
+        <>
+            <section className="core-concept">
+                {concept.map((data, index) => (
+                    <div key={index} className="concept">
+                        <img src={data.image} alt={data.name} className="image" />
+                        <h1>{data.name}</h1>
+                        <p>{data.description}</p>
+                    </div>
+                ))}
+            </section>
+
+            <section className="second-Core-div">
+                <h2 className="h2Header">Examples</h2>
+                <div>
+                    {Tabs.map((tab, index) => (
+                        <TabButton key={index} onTrigger={() => ContentChange(tab)}>
+                            {tab}
+                        </TabButton>
+                    ))}
+
+                    {content ? (
+                        <div className="example-content">
+                            <h3>{exampleData[content].name}</h3>
+                            <p>{exampleData[content].description}</p>
+                            {/* <p>
+                                <p>{exampleData[content].code}</p>
+                            </p> */}
+                        </div>
+                    ) : (
+                        <p className="content">Please click on the tab to see the content</p>
+                    )}
                 </div>
-            ))}
-        </div>
-    )
+            </section>
+        </>
+    );
 }
