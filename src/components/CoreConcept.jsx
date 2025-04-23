@@ -4,13 +4,7 @@ import TabButton from "./TabButton";
 import { exampleData } from "../data.js";
 
 export default function CoreConcept({ concept }) {
-    const [content, setContent] = useState(null); // Initial value should be null
-
-    function ContentChange(tab) {
-        const key = tab.toLowerCase(); // Convert tab label to match keys in exampleData
-        setContent(key);
-        console.log(exampleData[key]);
-    }
+    const [content, setContent] = useState(null);
 
     const Tabs = ["Component", "Props", "State", "JSX"];
 
@@ -27,10 +21,10 @@ export default function CoreConcept({ concept }) {
             </section>
 
             <section className="second-Core-div">
-                <h2 className="h2Header">Examples</h2>
+                <h2 className="h2Header">Examples :</h2>
                 <div>
                     {Tabs.map((tab, index) => (
-                        <TabButton key={index} onTrigger={() => ContentChange(tab)}>
+                        <TabButton key={index} onTrigger={() => setContent(tab.toLocaleLowerCase())}>
                             {tab}
                         </TabButton>
                     ))}
@@ -39,14 +33,15 @@ export default function CoreConcept({ concept }) {
                         <div className="example-content">
                             <h3>{exampleData[content].name}</h3>
                             <p>{exampleData[content].description}</p>
-                            {/* <p>
+                            <p>
                                 <p>{exampleData[content].code}</p>
-                            </p> */}
+                            </p>
                         </div>
                     ) : (
                         <p className="content">Please click on the tab to see the content</p>
                     )}
                 </div>
+
             </section>
         </>
     );

@@ -1,5 +1,5 @@
 body {
-    max-height:1000vh;
+    /* max-height:1000vh; */
     background-color: #160231;
     padding-bottom: 10px;      
     box-sizing: border-box;
@@ -11,7 +11,7 @@ body {
     left: 50%;
     top: 0; /* Make sure it's from the top */
     transform: translateX(-50%); /* Only center horizontally */
-    width: 1000px;
+    width: 100%;
     min-height:fit-content; /* Start with full height, allow more */
     padding-bottom: 10px; /* Optional: extra space at bottom */
 }

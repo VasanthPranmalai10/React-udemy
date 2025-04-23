@@ -32,11 +32,11 @@
 .tab-button-container {
     display: inline;    
     gap: 10px;               
-    margin-top: 10px;
+    margin: 10px 10px;
   }
   
 .tab-button-container button {
-  padding: 8px 14px;
+  padding: 8px 8px;
   font-size: 13px;
   cursor: pointer;
   margin-right:12px;
@@ -48,7 +48,7 @@
 }
 
 .tab-button-container button:hover {
-  background-color: #0A0116;
+  background-color: #6517C8;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
